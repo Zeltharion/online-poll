@@ -23,10 +23,16 @@ export const QuestionList = observer(() => {
 	}
 
 	return currentPage.questions.map((question) => (
-		<div key={question.id} className='flex flex-col gap-4'>
+		<div key={question.id} className='flex flex-col gap-2'>
 			<h3 className='text-2xl font-semibold'>
-				{question.title} {question.required && <span className='text-red-500 ml-1'>*</span>}
+				{question.title}
+				{question.required && <span className='text-red-500 ml-1'>*</span>}
 			</h3>
+			<p className='text-sm text-muted-foreground'>
+				{question.type === 'single'
+					? `Один вариант ответа`
+					: `Выберите один или несколько вариантов ответа`}
+			</p>
 			<QuestionRenderer question={question} />
 		</div>
 	))
